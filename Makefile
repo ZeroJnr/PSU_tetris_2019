@@ -5,9 +5,10 @@
 ## Makefile
 ##
 
-SRC_DIR	=	./src/
+SRC_DIR	=	./src/game/
+SRC_PARS = ./src/parsing/
 
-SRC	=	$(SRC_DIR)check_tetriminos.c	\
+SRC	=	$(SRC_PARS)check_tetriminos.c	\
 		$(SRC_DIR)getstat.c	\
 		$(SRC_DIR)main.c	\
 

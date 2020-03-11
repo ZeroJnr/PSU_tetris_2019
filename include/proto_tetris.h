@@ -17,6 +17,7 @@
 #include <sys/stat.h>
 
 #include "struct.h"
+#include "proto_lib.h"
 
 int getstat(char const *filepath);
 int main(int ac, char **av);
