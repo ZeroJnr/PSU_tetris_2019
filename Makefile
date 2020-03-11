@@ -10,6 +10,7 @@ SRC_PARS = ./src/parsing/
 LIB_DIR	=	./lib/
 
 SRC	=	$(SRC_PARS)check_tetriminos.c	\
+		$(SRC_PARS)parsing_param.c	\
 		$(SRC_PARS)getstat.c	\
 		$(SRC_DIR)main.c	\
 
