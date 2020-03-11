@@ -7,27 +7,22 @@
 
 #include "proto_tetris.h"
 
-static void display(char *filepath, char *buffer)
+void display(char *filepath, char *buffer)
 {
     my_putstr("Tetriminos : Name ");
-    write(1, &filepath[13], 1);
-    my_putstr(" :  Size ");
+    write(1, &filepath[1], 1);
+    my_putstr(" : Size ");
     write(1, &buffer[0], 1);
-    my_putchar('*');
+    
     write(1, &buffer[2], 1);
-    my_putstr(" :  Color ");
-    write(1, &buffer[4], 1);
-    my_putstr(" :\n");
-    for (int i = 6; buffer[i] != '\0'; i++) {
-        write(1, &buffer[i], 1);
-    }
 }
+
 int check_tetriminos(char *filepath)
 {
     int fd = 0;
     size_t size = 0;
     ssize_t i = 0;
-    char *buffer = NULL;
+    char **buffer = NULL;
 
     if ((fd = open(filepath, O_RDONLY)) <= 0)
         return (84);
@@ -36,6 +31,6 @@ int check_tetriminos(char *filepath)
     buffer = malloc(sizeof(char) * (size));
     if (read(fd, &buffer, size) <= 0)
         return (84);
-    display(filepath, &buffer);
+    display(filepath, buffer);
     return (0);
 }

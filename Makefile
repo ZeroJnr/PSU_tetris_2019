@@ -7,19 +7,21 @@
 
 SRC_DIR	=	./src/game/
 SRC_PARS = ./src/parsing/
+LIB_DIR	=	./lib/
 
 SRC	=	$(SRC_PARS)check_tetriminos.c	\
-		$(SRC_DIR)getstat.c	\
+		$(SRC_PARS)getstat.c	\
 		$(SRC_DIR)main.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
 NAME	=	tetris
 
-CFLAGS	=	-Wall -Wextra -I include -g
+CFLAGS	=	-Wall -Wextra -I./include/ -I./lib/
 
 all:	$(OBJ)
-	$(CC) -o $(NAME) $(OBJ) $(CFLAGS)
+	make -C $(LIB_DIR)
+	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) -L $(LIB_DIR) -lmy
 
 clean:
 	@$(RM) -f $(OBJ)
