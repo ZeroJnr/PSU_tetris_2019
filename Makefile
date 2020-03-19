@@ -24,6 +24,9 @@ all:	$(OBJ)
 	make -C $(LIB_DIR)
 	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) -L $(LIB_DIR) -lmy
 
+debug: CFLAGS += -g
+debug: re
+
 clean:
 	@$(RM) -f $(OBJ)
 
