@@ -33,5 +33,6 @@ void my_allocation(tetris_t *tetris);
 void write_my_debug(tetris_t *tetris);
 void fill_my_list_sec(tetris_t *tetris);
 void fill_my_list(tetris_t *tetris);
-
+void fill_my_list_one_2(tetris_t *tetris);
+int debug_mode(char **av, int ac, tetris_t *tetris, char **env);
 #endif

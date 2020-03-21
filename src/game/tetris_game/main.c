@@ -7,23 +7,26 @@
 
 #include "proto_tetris.h"
 
-int main(int ac, char **av, char **env)
+static int error_handling(int ac)
 {
-    tetris_t tetris = {0};
-    int my_cmd = 0;
-
     if (ac < 2) {
         my_putstr("Error in argument\n");
         return (84);
     }
+    return 0;
+}
+
+int main(int ac, char **av, char **env)
+{
+    tetris_t tetris = {0};
+    bool my_cmd = false;
+
+    if (error_handling(ac) == 84)
+        return 84;
     my_cmd = parsing_param(av, "--help");
+    if (debug_mode(av, ac, &tetris, env) == 84)
+        return 84;
     if (ac > 1 && my_cmd == true)
         help_mode();
-    if (ac >= 2 && my_cmd != true) {
-        if (set_my_term(&tetris, env) == 84)
-            return 84;
-        find_my_cmd(&tetris, av, ac);
-        write_my_debug(&tetris);
-    }
     return (0);
 }

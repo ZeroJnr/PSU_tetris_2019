@@ -21,6 +21,20 @@ void fill_my_list(tetris_t *tetris)
     LIST1[9] = "-w";
 }
 
+void fill_my_list_one_2(tetris_t *tetris)
+{
+    LIST1_2[0] = "--key-left=";
+    LIST1_2[1] = "--key-right=";
+    LIST1_2[2] = "--key-turn=";
+    LIST1_2[3] = "--key-drop=";
+    LIST1_2[4] = "--key-quit=";
+    LIST1_2[5] = "--key-pause=";
+    LIST1_2[6] = "--without-next=";
+    LIST1_2[7] = "--level=";
+    LIST1_2[8] = "--map-size=";
+    LIST1_2[9] = "-w";
+}
+
 void fill_my_list_sec(tetris_t *tetris)
 {
     LIST2[0] = "^EOD";

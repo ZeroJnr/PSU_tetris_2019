@@ -37,11 +37,16 @@ int find_my_cmd(tetris_t *tetris, char **av, int ac)
     int i = 0;
 
     my_allocation(tetris);
+    fill_my_list_one_2(tetris);
     fill_my_list(tetris);
     fill_my_list_sec(tetris);
     while (i < 10) {
         if (parsing_param(av, LIST1[i]) == true) {
             buffer = check_my_quote(av, ac, LIST1[i]);
+            LIST3[i] = buffer;
+        }
+        else if (parsing_param(av, LIST1_2[i]) == true) {
+            buffer = check_my_quote(av, ac, LIST1_2[i]);
             LIST3[i] = buffer;
         }
         else

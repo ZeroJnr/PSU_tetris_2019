@@ -16,6 +16,7 @@ struct debug
     int i;
     int j;
     char *my_term;
+    char **list1_2;
     char **list1;
     char **list2;
     char **list3;
