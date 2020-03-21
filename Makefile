@@ -6,29 +6,40 @@
 ##
 
 SRC_DIR	=	./src/game/
+SRC_DEBM = ./src/game/debug_mode/
+SRC_TETRIS = ./src/game/tetris_game/
+SRC_PARS_DEB = ./src/parsing/parse_debug_mode/
+SRC_PARS_TETR = ./src/parsing/parse_tetriminos/
 SRC_PARS = ./src/parsing/
 LIB_DIR	=	./lib/
 
-SRC	=	$(SRC_PARS)check_tetriminos.c	\
-		$(SRC_PARS)parsing_param.c	\
-		$(SRC_PARS)getstat.c	\
-		$(SRC_DIR)main.c	\
+SRC	=	$(SRC_PARS_TETR)check_tetriminos.c	\
+		$(SRC_PARS_DEB)parsing_param.c	\
+		$(SRC_PARS_TETR)getstat.c	\
+		$(SRC_PARS_DEB)pars_env.c   \
+		$(SRC_DEBM)help_mode.c   \
+		$(SRC_DEBM)set_my_term.c    \
 
-OBJ	=	$(SRC:.c=.o)
+SRC_BUILD   =   $(SRC) $(SRC_TETRIS)main.c \
 
 NAME	=	tetris
 
-CFLAGS	=	-Wall -Wextra -I./include/ -I./lib/
+CFLAGS	=	-lncurses -Wall -Wextra -Werror -I./include/ -I./lib/
+
+OBJ	=	$(SRC_BUILD:.c=.o)
+
+OBJ_TESTS	=	$(SRC:.c=.o)
 
 all:	$(OBJ)
 	make -C $(LIB_DIR)
-	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) -L $(LIB_DIR) -lmy
+	gcc -o $(NAME) $(OBJ) $(CFLAGS) -L $(LIB_DIR) -lmy
 
 debug: CFLAGS += -g
 debug: re
 
 clean:
 	@$(RM) -f $(OBJ)
+	@rm -f $(LIB_DIR)*.o
 
 fclean: clean
 	@$(RM) -f $(NAME)

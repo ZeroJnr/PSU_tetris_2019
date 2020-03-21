@@ -15,6 +15,7 @@ struct debug
 {
     int i;
     int j;
+    char *my_term;
 };
 
 struct tetris
