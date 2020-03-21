@@ -1,0 +1,4 @@
+*.o
+NormEZ.rb
+*.gc*
+*.tetrimino

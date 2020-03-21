@@ -7,7 +7,7 @@
 
 #include "proto_tetris.h"
 
-int set_my_term(tetris_t *tetris, char** env)
+int set_my_term(tetris_t *tetris, char **env)
 {
     int set = 0;
     int err = 0;
@@ -18,6 +18,5 @@ int set_my_term(tetris_t *tetris, char** env)
         my_putstr("Error to set your terminal\n");
         return 84;
     }
-    printf("Result of setupterm : set=%d, err=%d\n", set, err);
     return 0;
 }
