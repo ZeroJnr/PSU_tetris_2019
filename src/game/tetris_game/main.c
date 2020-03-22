@@ -21,6 +21,7 @@ int main(int ac, char **av, char **env)
     tetris_t tetris = {0};
     bool my_cmd = false;
 
+    open_dir();
     if (error_handling(ac) == 84)
         return 84;
     my_cmd = parsing_param(av, "--help");

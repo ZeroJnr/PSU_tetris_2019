@@ -22,9 +22,6 @@ static void write_my_debug_sec(tetris_t *tetris)
     my_putstr("Size :\t");
     my_putstr(LIST3[8]);
     my_putchar('\n');
-    my_putstr("Tetriminos :\t");
-    my_putstr(LIST3[9]);
-    my_putchar('\n');
 }
 
 void write_my_debug(tetris_t *tetris)

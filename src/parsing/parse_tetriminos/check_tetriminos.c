@@ -7,13 +7,21 @@
 
 #include "proto_tetris.h"
 
-static bool check_fake(char *filepath)
+static void get_name(char *filepath)
 {
-    if (filepath[13] == '4') {
-        my_putstr("Tetriminos : Name ");
-        write(1, &filepath[13], 1);
-        my_putstr(" : Error\n");
-        return true;
+    for (int i = 13; filepath[i] != '.'; i++)
+        write(1, &filepath[i], 1);
+}
+
+static bool check_fake(char *buffer, char *filepath)
+{
+    for (int i = 0; buffer[i] != '\n'; ++i) {
+        if ((buffer[i] < '0' || buffer[i] > '9') && buffer[i] != ' ') {
+            my_putstr("Tetriminos : Name ");
+            get_name(filepath);
+            my_putstr(" : Error\n");
+            return true;
+        }
     }
     return false;
 }
@@ -21,7 +29,7 @@ static bool check_fake(char *filepath)
 static void display(char *filepath, char *buffer)
 {
     my_putstr("Tetriminos : Name ");
-    write(1, &filepath[13], 1);
+    get_name(filepath);
     my_putstr(" :  Size ");
     write(1, &buffer[0], 1);
     my_putchar('*');
@@ -44,10 +52,11 @@ int check_tetriminos(char *filepath)
         return 84;
     else if ((size = getstat(filepath)) <= 0)
         return 84;
-    buffer = malloc(sizeof(char) * (size));
+    if (!(buffer = malloc(sizeof(char) * (size))))
+        return (84);
     if (read(fd, buffer, size) <= 0)
         return 84;
-    if (check_fake(filepath) == true)
+    if (check_fake(buffer, filepath) == true)
         return 84;
     display(filepath, buffer);
     return (0);

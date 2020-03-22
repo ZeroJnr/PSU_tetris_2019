@@ -22,6 +22,7 @@ LIB	=	$(DIR)my_length.c	\
 		$(DIR)to_number.c	\
 		$(DIR)total_words.c	\
 		$(DIR)my_strcmp.c	\
+		$(DIR)my_strcat.c
 
 CFLAGS = -Wall -Wextra -g
 

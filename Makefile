@@ -24,6 +24,7 @@ SRC	=	$(SRC_PARS_TETR)check_tetriminos.c	\
 		$(SRC_DEBM)fill_my_list.c   \
 		$(SRC_DEBM)debug_mode.c     \
 		$(SRC_DEBM)my_allocation.c  \
+		$(SRC_PARS_TETR)check_dir.c
 
 SRC_BUILD   =   $(SRC) $(SRC_TETRIS)main.c \
 

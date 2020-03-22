@@ -17,6 +17,7 @@
 #include <getopt.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <dirent.h>
 #include "struct.h"
 #include "proto_lib.h"
 #include "macro.h"
@@ -35,4 +36,6 @@ void fill_my_list_sec(tetris_t *tetris);
 void fill_my_list(tetris_t *tetris);
 void fill_my_list_one_2(tetris_t *tetris);
 int debug_mode(char **av, int ac, tetris_t *tetris, char **env);
+int open_dir(void);
+
 #endif
