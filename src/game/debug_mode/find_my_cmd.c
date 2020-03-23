@@ -40,7 +40,7 @@ int find_my_cmd(tetris_t *tetris, char **av, int ac)
     fill_my_list_one_2(tetris);
     fill_my_list(tetris);
     fill_my_list_sec(tetris);
-    while (i < 10) {
+    while (i < 9) {
         if (parsing_param(av, LIST1[i]) == true) {
             buffer = check_my_quote(av, ac, LIST1[i]);
             LIST3[i] = buffer;

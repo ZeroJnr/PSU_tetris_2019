@@ -27,6 +27,7 @@ int debug_mode(char **av, int ac, tetris_t *tetris, char **env)
             }
             find_my_cmd(tetris, av, ac);
             write_my_debug(tetris);
+            open_dir();
         }
     }
     return 0;

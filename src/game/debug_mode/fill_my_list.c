@@ -18,7 +18,6 @@ void fill_my_list(tetris_t *tetris)
     LIST1[6] = "-w";
     LIST1[7] = "-L";
     LIST1[8] = "--map-size";
-    LIST1[9] = "-w";
 }
 
 void fill_my_list_one_2(tetris_t *tetris)
@@ -32,7 +31,6 @@ void fill_my_list_one_2(tetris_t *tetris)
     LIST1_2[6] = "--without-next=";
     LIST1_2[7] = "--level=";
     LIST1_2[8] = "--map-size=";
-    LIST1_2[9] = "-w";
 }
 
 void fill_my_list_sec(tetris_t *tetris)
@@ -46,5 +44,4 @@ void fill_my_list_sec(tetris_t *tetris)
     LIST2[6] = "Yes";
     LIST2[7] = "1";
     LIST2[8] = "20*10";
-    LIST2[9] = "13";
 }

@@ -37,5 +37,8 @@ void fill_my_list(tetris_t *tetris);
 void fill_my_list_one_2(tetris_t *tetris);
 int debug_mode(char **av, int ac, tetris_t *tetris, char **env);
 int open_dir(void);
+int my_game(tetris_t *tetris);
+int tetris_font(char *filepath);
+int manage_my_curses(void);
 
 #endif

@@ -31,14 +31,14 @@ static void display(char *filepath, char *buffer)
     my_putstr("Tetriminos : Name ");
     get_name(filepath);
     my_putstr(" :  Size ");
-    write(1, &buffer[0], 1);
+    my_putchar(buffer[0]);
     my_putchar('*');
-    write(1, &buffer[2], 1);
+    my_putchar(buffer[2]);
     my_putstr(" :  Color ");
-    write(1, &buffer[4], 1);
+    my_putchar(buffer[4]);
     my_putstr(" :\n");
     for (int i = 6; buffer[i] != '\0'; i++) {
-        write(1, &buffer[i], 1);
+        my_putchar(buffer[i]);
     }
 }
 

@@ -17,6 +17,9 @@ SRC	=	$(SRC_PARS_TETR)check_tetriminos.c	\
 		$(SRC_PARS_DEB)parsing_param.c	\
 		$(SRC_PARS_TETR)getstat.c	\
 		$(SRC_PARS_DEB)pars_env.c   \
+		$(SRC_TETRIS)my_game.c  \
+		$(SRC_TETRIS)tetris_font.c  \
+		$(SRC_TETRIS)manage_my_curses.c \
 		$(SRC_DEBM)help_mode.c   \
 		$(SRC_DEBM)set_my_term.c    \
 		$(SRC_DEBM)find_my_cmd.c    \
