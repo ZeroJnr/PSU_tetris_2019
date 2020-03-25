@@ -19,7 +19,7 @@ static int check_fake(char *buffer, char *filepath)
         if ((buffer[i] < '0' || buffer[i] > '9') && buffer[i] != ' ') {
             my_putstr("Tetriminos :  Name ");
             get_name(filepath);
-            my_putstr(" : Error\n");
+            my_putstr(" :  Error\n");
             return 84;
         }
     }
