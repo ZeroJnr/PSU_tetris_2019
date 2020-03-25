@@ -23,7 +23,6 @@
 #include "proto_lib.h"
 #include "macro.h"
 
-int getstat(char const *filepath);
 void test_function(void);
 char *parsing_env(char **env, char *path);
 int help_mode(void);

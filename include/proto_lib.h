@@ -8,6 +8,7 @@
 #ifndef PROTO_LIB
 #define PROTO_LIB
 
+int getstat(char const *filepath);
 int my_strncmp(char *s1, char *s2, int n);
 int my_lenght(char const *);
 void my_putchar(char);

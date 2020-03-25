@@ -15,7 +15,6 @@ LIB_DIR	=	./lib/
 
 SRC	=	$(SRC_PARS_TETR)check_tetriminos.c	\
 		$(SRC_PARS_DEB)parsing_param.c	\
-		$(SRC_PARS_TETR)getstat.c	\
 		$(SRC_PARS_DEB)pars_env.c   \
 		$(SRC_PARS_TETR)sort_file.c \
 		$(SRC_PARS_TETR)get_filepath.c  \
