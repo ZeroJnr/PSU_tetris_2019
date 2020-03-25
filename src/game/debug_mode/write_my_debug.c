@@ -43,4 +43,5 @@ void write_my_debug(tetris_t *tetris)
     my_putstr("Key Quit :\t");
     my_putstr(LIST3[4]);
     write_my_debug_sec(tetris);
+
 }

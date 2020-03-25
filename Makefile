@@ -17,9 +17,12 @@ SRC	=	$(SRC_PARS_TETR)check_tetriminos.c	\
 		$(SRC_PARS_DEB)parsing_param.c	\
 		$(SRC_PARS_TETR)getstat.c	\
 		$(SRC_PARS_DEB)pars_env.c   \
+		$(SRC_PARS_TETR)sort_file.c \
+		$(SRC_PARS_TETR)get_filepath.c  \
 		$(SRC_TETRIS)my_game.c  \
 		$(SRC_TETRIS)tetris_font.c  \
 		$(SRC_TETRIS)manage_my_curses.c \
+		$(SRC_TETRIS)create_my_game_map.c   \
 		$(SRC_DEBM)help_mode.c   \
 		$(SRC_DEBM)set_my_term.c    \
 		$(SRC_DEBM)find_my_cmd.c    \
@@ -27,7 +30,7 @@ SRC	=	$(SRC_PARS_TETR)check_tetriminos.c	\
 		$(SRC_DEBM)fill_my_list.c   \
 		$(SRC_DEBM)debug_mode.c     \
 		$(SRC_DEBM)my_allocation.c  \
-		$(SRC_PARS_TETR)check_dir.c
+		$(SRC_DEBM)get_end.c    \
 
 SRC_BUILD   =   $(SRC) $(SRC_TETRIS)main.c \
 

@@ -28,7 +28,8 @@ int my_game(tetris_t *tetris)
     (void)tetris;
     init_game();
     manage_my_curses();
-    tetris_font("tetris_font.txt");
+    create_my_game_map();
+    tetris_font("tetris_font.txt", tetris);
     final_game();
     return 0;
 }

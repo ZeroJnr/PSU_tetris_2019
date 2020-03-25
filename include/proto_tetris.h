@@ -10,6 +10,7 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 #include <fcntl.h>
 #include <curses.h>
@@ -23,7 +24,6 @@
 #include "macro.h"
 
 int getstat(char const *filepath);
-int check_tetriminos(char *filepath);
 void test_function(void);
 char *parsing_env(char **env, char *path);
 int help_mode(void);
@@ -38,7 +38,12 @@ void fill_my_list_one_2(tetris_t *tetris);
 int debug_mode(char **av, int ac, tetris_t *tetris, char **env);
 int open_dir(void);
 int my_game(tetris_t *tetris);
-int tetris_font(char *filepath);
+int tetris_font(char *filepath, tetris_t *tetris);
 int manage_my_curses(void);
+void create_my_game_map(void);
+void get_end(tetris_t *tetris);
+int get_filepath(tetris_t *tetris);
+int call_check(tetris_t *tetris);
+void sort_files(tetris_t *tetris);
 
 #endif

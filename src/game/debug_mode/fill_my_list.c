@@ -33,15 +33,31 @@ void fill_my_list_one_2(tetris_t *tetris)
     LIST1_2[8] = "--map-size=";
 }
 
+static void loop_teget(tetris_t *tetris)
+{
+    for (int i = 0; i < 4; i++) {
+        LIST2[i] = tigetstr(LIST2[i]);
+        if ((my_strncmp(LIST2[i], "\eOD", my_lenght(LIST2[i]))) == 0)
+            LIST2[i] = "^EOD";
+        if (my_strncmp(LIST2[i], "\eOC", my_lenght(LIST2[i])) == 0)
+            LIST2[i] = "^EOC";
+        else if (my_strncmp(LIST2[i], "\eOA", my_lenght(LIST2[i])) == 0)
+            LIST2[i] = "^EOA";
+        else if (my_strncmp(LIST2[i], "\eOB", my_lenght(LIST2[i])) == 0)
+            LIST2[i] = "^EOB";
+    }
+}
+
 void fill_my_list_sec(tetris_t *tetris)
 {
-    LIST2[0] = "^EOD";
-    LIST2[1] = "^EOC";
-    LIST2[2] = "^EOA";
-    LIST2[3] = "^EOB";
+    LIST2[0] = "kcub1";
+    LIST2[1] = "kcuf1";
+    LIST2[2] = "kcuu1";
+    LIST2[3] = "kcud1";
     LIST2[4] = "q";
     LIST2[5] = "(space)";
     LIST2[6] = "Yes";
     LIST2[7] = "1";
     LIST2[8] = "20*10";
+    loop_teget(tetris);
 }

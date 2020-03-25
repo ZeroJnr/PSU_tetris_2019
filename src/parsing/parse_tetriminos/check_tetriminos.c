@@ -10,25 +10,25 @@
 static void get_name(char *filepath)
 {
     for (int i = 13; filepath[i] != '.'; i++)
-        write(1, &filepath[i], 1);
+        my_putchar(filepath[i]);
 }
 
-static bool check_fake(char *buffer, char *filepath)
+static int check_fake(char *buffer, char *filepath)
 {
     for (int i = 0; buffer[i] != '\n'; ++i) {
         if ((buffer[i] < '0' || buffer[i] > '9') && buffer[i] != ' ') {
-            my_putstr("Tetriminos : Name ");
+            my_putstr("Tetriminos :  Name ");
             get_name(filepath);
             my_putstr(" : Error\n");
-            return true;
+            return 84;
         }
     }
-    return false;
+    return 0;
 }
 
-static void display(char *filepath, char *buffer)
+static void display(char *filepath, char *buffer, int size)
 {
-    my_putstr("Tetriminos : Name ");
+    my_putstr("Tetriminos :  Name ");
     get_name(filepath);
     my_putstr(" :  Size ");
     my_putchar(buffer[0]);
@@ -37,12 +37,13 @@ static void display(char *filepath, char *buffer)
     my_putstr(" :  Color ");
     my_putchar(buffer[4]);
     my_putstr(" :\n");
-    for (int i = 6; buffer[i] != '\0'; i++) {
+    for (int i = 6; i < size; i++) {
         my_putchar(buffer[i]);
     }
+    my_putchar('\n');
 }
 
-int check_tetriminos(char *filepath)
+static int check_tetriminos(char *filepath)
 {
     int fd = 0;
     size_t size = 0;
@@ -50,14 +51,26 @@ int check_tetriminos(char *filepath)
 
     if ((fd = open(filepath, O_RDONLY)) <= 0)
         return 84;
-    else if ((size = getstat(filepath)) <= 0)
+    if ((size = getstat(filepath)) <= 0)
         return 84;
-    if (!(buffer = malloc(sizeof(char) * (size))))
+    if (!(buffer = malloc(sizeof(char) * (size + 1))))
         return (84);
-    if (read(fd, buffer, size) <= 0)
+    else if (read(fd, buffer, size) <= 0)
         return 84;
-    if (check_fake(buffer, filepath) == true)
-        return 84;
-    display(filepath, buffer);
+    if (check_fake(buffer, filepath) == 84)
+        return -1;
+    display(filepath, buffer, size);
+    close(fd);
+    free(buffer);
     return (0);
+}
+
+int call_check(tetris_t *tetris)
+{
+    for (int i = 0; i != NB_TETRI; i++) {
+        if (check_tetriminos(FILES[i]) == 84)
+            return 84;
+    }
+    my_putstr("Press any key to start Tetris\n");
+    return 0;
 }
