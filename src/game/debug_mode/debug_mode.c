@@ -22,9 +22,8 @@ int debug_mode(char **av, int ac, tetris_t *tetris, char **env)
         if (error_handling(ac) == 84)
             return 84;
         if (ac >= 2 && (parsing_param(av, "--help") != true)) {
-            if (set_my_term(tetris, env) == 84) {
+            if (set_my_term(tetris, env) == 84)
                 return 84;
-            }
             find_my_cmd(tetris, av, ac);
             write_my_debug(tetris);
             get_filepath(tetris);

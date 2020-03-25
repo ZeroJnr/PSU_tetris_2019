@@ -11,8 +11,9 @@ static int main_game(int ac, tetris_t *tetris)
 {
     if (ac < 2) {
         my_game(tetris);
+        exit(0);
     }
-    exit(0);
+    return 0;
 }
 
 int main(int ac, char **av, char **env)
