@@ -14,32 +14,29 @@ static void print_bin(char *binary)
     my_putstr(" [options]\n");
 }
 
-static int my_cat(int byte, char *filepath, char *binary)
+static void my_cat(char *binary)
 {
-    char *buffer = malloc(sizeof(char) * byte + 1);
-    int rd = 0;
-    int fd = open(filepath, O_RDONLY);
-
-    if (fd <= 0) {
-        my_putstr("Open failed\n");
-        return 84;
-    }
-    rd = read(fd, buffer, byte);
-    if (rd <= 0) {
-        my_putstr("Read failed\n");
-        return 84;
-    }
     print_bin(binary);
-    write(1, buffer, byte);
-    my_putchar('\n');
-    return 0;
+	my_putstr("Options:\n");
+	my_putstr(" --help\t\t\tDisplay this help\n");
+	my_putstr(" -L --level={num}\tStart Tetris at level num (def: 1)\n -l");
+	my_putstr(" --key-left={K}\tMove the tetrimino LEFT using the K key ");
+	my_putstr("(def: left arrow)\n -r --key-right={K}\tMove the tetrimino");
+	my_putstr(" right using the K key (def: right arrow)\n -t --key-turn=");
+	my_putstr("{K}\tTURN the tetrimino clockwise 90d using the K key (def");
+	my_putstr(": top arrow)\n -d --key-drop={K}\tDROP the tetrimino using");
+	my_putstr(" the K key (def: down arrow)\n -q --key-quit={K}\tQUIT the");
+	my_putstr(" game using the K key (def: 'q' key)\n -p --key-pause={K}");
+	my_putstr("\tPAUSE/RESTART the game using the K key (def: space bar)");
+	my_putstr("\n --map-size={row,col}\tSet the numbers of rows and colum");
+	my_putstr("ns of the map (def: 20,10)\n -w --without-next\tHide next ");
+	my_putstr("tetrimino (def: false)\n -D --debug\t\tDebug mode (def: ");
+	my_putstr("false)\n");
 }
 
 int help_mode(char **av, int return_value)
 {
-    int size = getstat("./src/help.txt");
-    if (my_cat(size, "./src/help.txt", av[0]) == 84)
-        return 84;
+    my_cat(av[0]);
     if (return_value == 84)
         exit(84);
     return return_value;
