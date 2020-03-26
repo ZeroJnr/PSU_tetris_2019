@@ -25,7 +25,7 @@
 
 void test_function(void);
 char *parsing_env(char **env, char *path);
-int help_mode(void);
+int help_mode(char **av);
 bool parsing_param(char **av, char *path);
 int set_my_term(tetris_t *tetris, char **env);
 int find_my_cmd(tetris_t *tetris, char **av, int ac);

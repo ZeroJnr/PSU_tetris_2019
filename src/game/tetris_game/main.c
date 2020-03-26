@@ -24,7 +24,7 @@ int main(int ac, char **av, char **env)
     main_game(ac, &tetris);
     my_cmd = parsing_param(av, "--help");
     if (ac > 1 && my_cmd == true) {
-        help_mode();
+        help_mode(av);
         return 0;
     }
     if (debug_mode(av, ac, &tetris, env) == 84) {

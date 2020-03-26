@@ -7,28 +7,37 @@
 
 #include "proto_tetris.h"
 
-static int my_cat(int byte, char *filepath)
+static void print_bin(char *binary)
+{
+    my_putstr("Usage: ");
+    my_putstr(binary);
+    my_putstr(" [options]\n");
+}
+
+static int my_cat(int byte, char *filepath, char *binary)
 {
     char *buffer = malloc(sizeof(char) * byte);
+    int rd = 0;
     int fd = open(filepath, O_RDONLY);
     if (fd <= 0) {
         my_putstr("Open failed\n");
         return 84;
     }
-    int rd = read(fd, buffer, byte);
+    rd = read(fd, buffer, byte);
     if (rd <= 0) {
         my_putstr("Read failed\n");
         return 84;
     }
+    print_bin(binary);
     my_putstr(buffer);
     my_putchar('\n');
     return 0;
 }
 
-int help_mode(void)
+int help_mode(char **av)
 {
     int size = getstat("./src/help.txt");
-    if (my_cat(size, "./src/help.txt") == 84)
+    if (my_cat(size, "./src/help.txt", av[0]) == 84)
         return 84;
     return 0;
 }
