@@ -19,17 +19,11 @@ static int main_game(int ac, tetris_t *tetris)
 int main(int ac, char **av, char **env)
 {
     tetris_t tetris = {0};
-    bool my_cmd = false;
+    tetris.argument.av = av;
+    tetris.argument.ac = ac;
 
     main_game(ac, &tetris);
-    my_cmd = parsing_param(av, "--help");
-    if (ac > 1 && my_cmd == true) {
-        help_mode(av);
-        return 0;
-    }
-    if (debug_mode(av, ac, &tetris, env) == 84) {
+    if (debug_mode(&tetris, env) == 84)
         return 84;
-    }
-    get_end(&tetris);
     return (0);
 }

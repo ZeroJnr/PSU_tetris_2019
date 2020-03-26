@@ -34,10 +34,11 @@ static int my_cat(int byte, char *filepath, char *binary)
     return 0;
 }
 
-int help_mode(char **av)
+int help_mode(char **av, int return_value)
 {
     int size = getstat("./src/help.txt");
     if (my_cat(size, "./src/help.txt", av[0]) == 84)
         return 84;
-    return 0;
+    return return_value;
 }
+

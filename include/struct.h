@@ -10,6 +10,7 @@
 
 typedef struct debug debug_t;
 typedef struct game game_t;
+typedef struct argument argument_t;
 typedef struct tetris tetris_t;
 
 struct debug
@@ -20,10 +21,13 @@ struct debug
     char **files;
     int nb_tetri;
     char *my_term;
-    char **list1_2;
     char **list1;
-    char **list2;
-    char **list3;
+};
+
+struct argument
+{
+    int ac;
+    char **av;
 };
 
 struct game
@@ -34,6 +38,7 @@ struct game
 struct tetris
 {
     debug_t debug;
+    argument_t argument;
     game_t game;
 };
 

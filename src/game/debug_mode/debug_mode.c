@@ -7,28 +7,20 @@
 
 #include "proto_tetris.h"
 
-static int error_handling(int ac)
+int debug_mode(tetris_t *tetris, char **env)
 {
-    if (ac % 2 != 0) {
-        my_putstr("Error you have invalid argument\n");
+    if (set_my_term(tetris, env) == 84)
         return 84;
-    }
-    return 0;
-}
-
-int debug_mode(char **av, int ac, tetris_t *tetris, char **env)
-{
-    if (parsing_param(av, "-D") == true) {
-        if (error_handling(ac) == 84)
-            return 84;
-        if (ac >= 2 && (parsing_param(av, "--help") != true)) {
-            if (set_my_term(tetris, env) == 84)
-                return 84;
-            find_my_cmd(tetris, av, ac);
-            write_my_debug(tetris);
-            get_filepath(tetris);
-            call_check(tetris);
-        }
-    }
+    my_allocation(tetris);
+    manage_my_arg(tetris);
+    if (my_strncmp(LIST1[6], "true", my_lenght(LIST1[6])) == 0)
+        LIST1[6] = "No";
+    if (my_strncmp(LIST1[9], "true", my_lenght(LIST1[9])) == 0) {
+        write_my_debug(tetris);
+        get_filepath(tetris);
+        call_check(tetris);
+        get_end(tetris);
+    } else
+        my_game(tetris);
     return 0;
 }

@@ -7,49 +7,24 @@
 
 #include "proto_tetris.h"
 
-static char *check_buffer_spaces(char *buffer)
+void catch_arg_flags(tetris_t *tetris, struct option *long_options)
 {
-    char *new_buf = NULL;
+    int opt = 0;
+    int opt_idx = 0;
 
-    if (my_strncmp(buffer, " ", my_lenght(buffer)) == 0)
-        new_buf = "(space)";
-    else
-        new_buf = buffer;
-    return new_buf;
-}
-
-static char *check_my_quote(char **av, int ac, char *str)
-{
-    (void)ac;
-    int j = 0;
-    char *buffer = NULL;
-
-    while (my_strncmp(av[j], str, my_lenght(av[j])) != 0)
-        j++;
-    buffer = av[j + 1];
-    buffer = check_buffer_spaces(buffer);
-    return buffer;
-}
-
-int find_my_cmd(tetris_t *tetris, char **av, int ac)
-{
-    char *buffer = NULL;
-    int i = 0;
-
-    my_allocation(tetris);
-    fill_my_list_one_2(tetris);
-    fill_my_list(tetris);
-    fill_my_list_sec(tetris);
-    while (i < 9) {
-        if (parsing_param(av, LIST1[i]) == true) {
-            buffer = check_my_quote(av, ac, LIST1[i]);
-            LIST3[i] = buffer;
-        } else if (parsing_param(av, LIST1_2[i]) == true) {
-            buffer = check_my_quote(av, ac, LIST1_2[i]);
-            LIST3[i] = buffer;
-        } else
-            LIST3[i] = LIST2[i];
-        i++;
+    while ((opt = getopt_long(AC, AV, "hL:l:r:t:d:q:p:X:wD", long_options, \
+    &opt_idx)) != -1) {
+        opt == 'h' ? help_mode(AV, 0) : 1;
+        opt == 'l' ? (LIST1[0] = optarg) : "1";
+        opt == 'r' ? (LIST1[1] = optarg) : "1";
+        opt == 't' ? (LIST1[2] = optarg) : "1";
+        opt == 'd' ? (LIST1[3] = optarg) : "1";
+        opt == 'q' ? (LIST1[4] = optarg) : "1";
+        opt == 'p' ? (LIST1[5] = optarg) : "1";
+        opt == 'w' ? (LIST1[6] = "true") : "1";
+        opt == 'L' ? (LIST1[7] = optarg) : "1";
+        opt == 'x' ? (LIST1[8] = optarg) : "1";
+        opt == 'D' ? (LIST1[9] = "true") : "1";
+        opt == '?' ? help_mode(AV, 84) : 1;
     }
-    return 0;
 }
