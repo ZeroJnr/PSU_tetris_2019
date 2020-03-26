@@ -7,6 +7,14 @@
 
 #include "proto_tetris.h"
 
+static void check_flags(tetris_t *tetris)
+{
+    if (AC > 1 && parsing_param(AV, "-") == 0)
+        help_mode(AV, 84);
+    else
+        my_game(tetris);
+}
+
 int debug_mode(tetris_t *tetris, char **env)
 {
     if (set_my_term(tetris, env) == 84)
@@ -21,6 +29,6 @@ int debug_mode(tetris_t *tetris, char **env)
         call_check(tetris);
         get_end(tetris);
     } else
-        my_game(tetris);
+        check_flags(tetris);
     return 0;
 }

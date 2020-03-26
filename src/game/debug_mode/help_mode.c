@@ -39,6 +39,8 @@ int help_mode(char **av, int return_value)
     int size = getstat("./src/help.txt");
     if (my_cat(size, "./src/help.txt", av[0]) == 84)
         return 84;
+    if (return_value == 84)
+        exit(84);
     return return_value;
 }
 
