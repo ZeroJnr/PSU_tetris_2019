@@ -26,9 +26,9 @@ void display(char *filepath, char *buffer, int size)
     my_putstr(" : Color ");
     my_putchar(buffer[4]);
     my_putstr(" :\n");
-    for (; i <= size; i++) {
+    for (; i < size; i++) {
         my_putchar(buffer[i]);
     }
-    if (buffer[size] == '\0')
+    if (buffer[i] != '\n')
         my_putchar('\n');
 }
