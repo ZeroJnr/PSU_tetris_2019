@@ -29,6 +29,6 @@ void display(char *filepath, char *buffer, int size)
     for (; i < size; i++) {
         my_putchar(buffer[i]);
     }
-    if (buffer[i] != '\n')
+    if (buffer[i - 1] != '\n')
         my_putchar('\n');
 }

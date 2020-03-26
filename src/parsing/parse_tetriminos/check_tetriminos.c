@@ -48,6 +48,6 @@ int call_check(tetris_t *tetris)
         if (check_tetriminos(FILES[i]) == 84)
             return 84;
     }
-    my_putstr("\nPress any key to start Tetris\n");
+    my_putstr("Press any key to start Tetris\n");
     return 0;
 }
