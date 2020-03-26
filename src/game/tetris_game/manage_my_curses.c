@@ -23,10 +23,10 @@ int manage_my_curses(void)
     long row = 0;
     WINDOW * test;
 
-    box(stdscr,ACS_VLINE,ACS_HLINE) ;
-    getmaxyx(stdscr,row,col) ;
+    box(stdscr, ACS_VLINE,ACS_HLINE) ;
+    getmaxyx(stdscr, row, col) ;
     test = newwin(10, col, 0, 0);
-    box(test,ACS_VLINE,ACS_HLINE);
+    box(test, ACS_VLINE, ACS_HLINE);
     manage_small_window();
     (void)row;
     return 0;

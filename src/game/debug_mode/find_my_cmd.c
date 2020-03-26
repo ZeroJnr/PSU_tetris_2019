@@ -44,12 +44,10 @@ int find_my_cmd(tetris_t *tetris, char **av, int ac)
         if (parsing_param(av, LIST1[i]) == true) {
             buffer = check_my_quote(av, ac, LIST1[i]);
             LIST3[i] = buffer;
-        }
-        else if (parsing_param(av, LIST1_2[i]) == true) {
+        } else if (parsing_param(av, LIST1_2[i]) == true) {
             buffer = check_my_quote(av, ac, LIST1_2[i]);
             LIST3[i] = buffer;
-        }
-        else
+        } else
             LIST3[i] = LIST2[i];
         i++;
     }

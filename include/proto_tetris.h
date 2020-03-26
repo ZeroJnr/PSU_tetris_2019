@@ -44,5 +44,7 @@ void get_end(tetris_t *tetris);
 int get_filepath(tetris_t *tetris);
 int call_check(tetris_t *tetris);
 void sort_files(tetris_t *tetris);
+void display(char *filepath, char *buffer, int size);
+void get_name(char *filepath);
 
 #endif

@@ -21,7 +21,7 @@ void sort_files(tetris_t *tetris)
     for (int y = 0; y < NB_TETRI - 1; y++) {
         if (FILES[y][13] > FILES[y + 1][13]) {
             my_swap(tetris, y);
-          y = 0;
+            y = 0;
         }
     }
     if (FILES[0][13] > FILES[1][13])
