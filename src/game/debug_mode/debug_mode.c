@@ -24,6 +24,7 @@ int debug_mode(tetris_t *tetris, char **env)
     if (my_strncmp(LIST1[6], "true", my_lenght(LIST1[6])) == 0)
         LIST1[6] = "No";
     if (my_strncmp(LIST1[9], "true", my_lenght(LIST1[9])) == 0) {
+        without_spaces(tetris);
         write_my_debug(tetris);
         get_filepath(tetris);
         call_check(tetris);

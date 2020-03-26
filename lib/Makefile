@@ -24,7 +24,6 @@ LIB	=	$(DIR)my_length.c	\
 		$(DIR)my_strcmp.c	\
 		$(DIR)my_fill_double.c  \
 		$(DIR)getstat.c \
-		$(DIR)my_strcat.c
 
 CFLAGS = -Wall -Wextra -g
 
