@@ -11,7 +11,7 @@ static void check_flags(tetris_t *tetris)
 {
     if (AC > 1 && parsing_param(AV, "-") == 0)
         help_mode(AV, 84);
-    else
+    else if (parsing_param(AV, "--help") == 0)
         my_game(tetris);
 }
 
