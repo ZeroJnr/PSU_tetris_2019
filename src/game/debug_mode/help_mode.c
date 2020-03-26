@@ -16,9 +16,10 @@ static void print_bin(char *binary)
 
 static int my_cat(int byte, char *filepath, char *binary)
 {
-    char *buffer = malloc(sizeof(char) * byte);
+    char *buffer = malloc(sizeof(char) * byte + 1);
     int rd = 0;
     int fd = open(filepath, O_RDONLY);
+
     if (fd <= 0) {
         my_putstr("Open failed\n");
         return 84;
@@ -29,7 +30,7 @@ static int my_cat(int byte, char *filepath, char *binary)
         return 84;
     }
     print_bin(binary);
-    my_putstr(buffer);
+    write(1, buffer, byte);
     my_putchar('\n');
     return 0;
 }

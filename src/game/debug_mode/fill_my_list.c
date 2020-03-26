@@ -33,5 +33,6 @@ void fill_default_list(tetris_t *tetris)
     LIST1[6] = "Yes";
     LIST1[7] = "1";
     LIST1[8] = "20*10";
+    LIST1[9] = "false";
     catch_my_key(tetris);
 }
