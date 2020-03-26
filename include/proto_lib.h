@@ -26,5 +26,6 @@ int total_words(char const *str);
 int my_strncmp(char *s1, char *s2, int n);
 int my_strcmp(char const *str, char const *to_find);
 int my_fill_double(char *filepath);
+char *my_strcat(char *str1, char *str2);
 
 #endif
