@@ -18,12 +18,20 @@ static void my_swap(tetris_t *tetris, int y)
 
 void sort_files(tetris_t *tetris)
 {
-    for (int y = 0; y < NB_TETRI - 1; y++) {
+    int y = 0;
+    int count = 0;
+
+    while ((count != NB_TETRI) && (y < NB_TETRI - 1)) {
         if (FILES[y][13] > FILES[y + 1][13]) {
             my_swap(tetris, y);
             y = 0;
+            count = 0;
+        } else if (y + 1 == NB_TETRI - 1) {
+            count++;
+            y = 0;
+            continue;
         }
+        count++;
+        y++;
     }
-    if (FILES[0][13] > FILES[1][13])
-        my_swap(tetris, 0);
 }
