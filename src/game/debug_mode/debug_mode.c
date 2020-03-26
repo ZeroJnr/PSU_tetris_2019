@@ -7,11 +7,24 @@
 
 #include "proto_tetris.h"
 
+static bool check_equal_flags(tetris_t *tetris)
+{
+    for (int i = 0; AV[i]; i++) {
+        if (AV[i][0] == '-') {
+            if (AV[i][2] == '=')
+                return true;
+        }
+    }
+    return false;
+}
+
 static void check_flags(tetris_t *tetris)
 {
     if (AC > 1 && parsing_param(AV, "-") == 0)
         help_mode(AV, 84);
-    else if (parsing_param(AV, "--help") == 0)
+    else if (check_equal_flags(tetris) == true)
+        help_mode(AV, 84);
+    else
         my_game(tetris);
 }
 

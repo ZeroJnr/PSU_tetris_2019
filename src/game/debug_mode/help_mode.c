@@ -37,8 +37,7 @@ static void my_cat(char *binary)
 int help_mode(char **av, int return_value)
 {
     my_cat(av[0]);
-    if (return_value == 84)
-        exit(84);
+    exit(return_value);
     return return_value;
 }
 
