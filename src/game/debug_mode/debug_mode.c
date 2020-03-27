@@ -33,6 +33,7 @@ int debug_mode(tetris_t *tetris, char **env)
     if (set_my_term(tetris, env) == 84)
         return 84;
     my_allocation(tetris);
+    space_after_equal(tetris);
     manage_my_arg(tetris);
     if (my_strncmp(LIST1[6], "true", my_lenght(LIST1[6])) == 0)
         LIST1[6] = "No";
