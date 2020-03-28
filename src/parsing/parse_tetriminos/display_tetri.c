@@ -9,7 +9,10 @@
 
 void get_name(char *filepath)
 {
-    for (int i = 13; filepath[i] != '.'; i++)
+    int x = 13;
+
+    for (; filepath[x] != '\0'; x++);
+    for (int i = 13; i < (x - 10); i++)
         my_putchar(filepath[i]);
 }
 
@@ -26,9 +29,8 @@ void display(char *filepath, char *buffer, int size)
     my_putstr(" : Color ");
     my_putchar(buffer[4]);
     my_putstr(" :\n");
-    for (; i < size; i++) {
+    for (; i < size; i++)
         my_putchar(buffer[i]);
-    }
     if (buffer[i - 1] != '\n')
         my_putchar('\n');
 }
