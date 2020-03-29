@@ -29,25 +29,6 @@ static int check_car(char *buffer, char *filepath)
     return 0;
 }
 
-static int check_lines(char *buffer, char *filepath)
-{
-    int count = 0;
-    int i = 0;
-
-    for (; buffer[i] != '\n'; ++i);
-    ++i;
-    for (; buffer[i] != '\0'; ++i) {
-        count++;
-        if (buffer[i] == '\n' && count  - 1 == buffer[0] - '0')
-            count = 0;
-        else if (buffer[i] == '\n' && count - 1 != buffer[0] - '0') {
-            disp_error(filepath);
-            return 84;
-        }
-    }
-    return 0;
-}
-
 static int check_cols(char *buffer, char *filepath)
 {
     int count = 0;
@@ -81,9 +62,7 @@ int error_tetri(char *buffer, char *filepath)
         return 84;
     } else if (check_cols(buffer, filepath) == 84)
         return 84;
-    if (check_lines(buffer, filepath) == 84)
-        return 84;
-    else if (check_car(buffer, filepath) == 84)
+    if (check_car(buffer, filepath) == 84)
         return 84;
     return 0;
 }
