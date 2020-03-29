@@ -66,17 +66,24 @@ static int check_cols(char *buffer, char *filepath)
 
 int error_tetri(char *buffer, char *filepath)
 {
+    int count = 0;
+
     for (int i = 0; buffer[i] != '\n'; ++i) {
+        if (buffer[i] == ' ')
+            count++;
         if ((buffer[i] < '0' || buffer[i] > '9') && buffer[i] != ' ') {
             disp_error(filepath);
             return 84;
         }
     }
-    if (check_cols(buffer, filepath) == 84)
+    if (count != 2) {
+        disp_error(filepath);
         return 84;
-    else if (check_lines(buffer, filepath) == 84)
+    } else if (check_cols(buffer, filepath) == 84)
         return 84;
-    if (check_car(buffer, filepath) == 84)
+    if (check_lines(buffer, filepath) == 84)
+        return 84;
+    else if (check_car(buffer, filepath) == 84)
         return 84;
     return 0;
 }
