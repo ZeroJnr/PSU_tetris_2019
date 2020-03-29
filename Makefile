@@ -31,7 +31,6 @@ SRC	=	$(SRC_PARS_TETR)check_tetriminos.c	\
 		$(SRC_DEBM)debug_mode.c     \
 		$(SRC_DEBM)my_allocation.c  \
 		$(SRC_DEBM)manage_my_arg.c  \
-		$(SRC_DEBM)without_spaces.c \
 		$(SRC_DEBM)get_end.c    \
 
 SRC_BUILD   =   $(SRC) $(SRC_TETRIS)main.c \
