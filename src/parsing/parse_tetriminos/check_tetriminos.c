@@ -7,34 +7,21 @@
 
 #include "proto_tetris.h"
 
-static int check_form(char *buffer, char *filepath)
+static void end(int fd, char *buffer)
 {
-    int count = 0;
-
-    for (int i = 0; buffer[i] != '\0'; ++i) {
-        if (buffer[i] == '\n')
-            count++;
-    }
-    if (count - 1 != buffer[2] - '0') {
-        my_putstr("Tetriminos : Name ");
-        get_name(filepath);
-        my_putstr(" : Error\n");
-        return 84;
-    }
-    return 0;
+    close(fd);
+    free(buffer);
 }
 
-static int check_fake(char *buffer, char *filepath)
+static int operat_tetri(char *buffer, char *filepath, int fd, int size)
 {
-    for (int i = 0; buffer[i] != '\n'; ++i) {
-        if ((buffer[i] < '0' || buffer[i] > '9') && buffer[i] != ' ') {
-            my_putstr("Tetriminos : Name ");
-            get_name(filepath);
-            my_putstr(" : Error\n");
-            return 84;
-        } else if (check_form(buffer, filepath) == 84)
-            return 84;
+    buffer[size] = '\0';
+    if (error_tetri(buffer, filepath) == 84) {
+        end(fd, buffer);
+        return -1;
     }
+    display(filepath, buffer, size);
+    end(fd, buffer);
     return 0;
 }
 
@@ -46,18 +33,20 @@ static int check_tetriminos(char *filepath)
 
     if ((fd = open(filepath, O_RDONLY)) <= 0)
         return 84;
-    else if ((size = getstat(filepath)) <= 0)
+    else if ((size = getstat(filepath)) <= 0) {
+        close(fd);
         return -1;
-    if (!(buffer = malloc(sizeof(char) * (size + 1))))
+    }
+    if (!(buffer = malloc(sizeof(char) * (size + 1)))) {
+        close(fd);
         return 84;
-    else if (read(fd, buffer, size) <= 0)
+    } else if (read(fd, buffer, size) <= 0) {
+        end(fd, buffer);
         return 84;
-    if (check_fake(buffer, filepath) == 84)
+    }
+    if (operat_tetri(buffer, filepath, fd, size) < 0)
         return -1;
-    display(filepath, buffer, size);
-    close(fd);
-    free(buffer);
-    return (0);
+    return 0;
 }
 
 int call_check(tetris_t *tetris)

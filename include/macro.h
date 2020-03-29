@@ -19,5 +19,7 @@
 #define LENGTH (my_lenght(rd->d_name) + my_lenght(DIRNAME))
 #define AC tetris->argument.ac
 #define AV tetris->argument.av
+#define CHAR (buffer[i] != '*' && buffer[i] != ' ' &&\
+        buffer[i] != '\n' && buffer[i] != '\0') 
 
 #endif

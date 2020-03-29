@@ -19,6 +19,7 @@ SRC	=	$(SRC_PARS_TETR)check_tetriminos.c	\
 		$(SRC_PARS_TETR)sort_file.c \
 		$(SRC_PARS_TETR)get_filepath.c  \
 		$(SRC_PARS_TETR)display_tetri.c	\
+		$(SRC_PARS_TETR)error_tetri.c	\
 		$(SRC_TETRIS)my_game.c  \
 		$(SRC_TETRIS)tetris_font.c  \
 		$(SRC_TETRIS)manage_my_curses.c \

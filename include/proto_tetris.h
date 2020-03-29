@@ -45,5 +45,6 @@ void display(char *filepath, char *buffer, int size);
 void get_name(char *filepath);
 void catch_arg_flags(tetris_t *tetris, struct option *long_options);
 void manage_my_arg(tetris_t *tetris);
+int error_tetri(char *buffer, char *filepath);
 
 #endif
