@@ -7,6 +7,23 @@
 
 #include "proto_tetris.h"
 
+static int check_form(char *buffer, char *filepath)
+{
+    int count = 0;
+
+    for (int i = 0; buffer[i] != '\0'; ++i) {
+        if (buffer[i] == '\n')
+            count++;
+    }
+    if (count - 1 != buffer[2] - '0') {
+        my_putstr("Tetriminos : Name ");
+        get_name(filepath);
+        my_putstr(" : Error\n");
+        return 84;
+    }
+    return 0;
+}
+
 static int check_fake(char *buffer, char *filepath)
 {
     for (int i = 0; buffer[i] != '\n'; ++i) {
@@ -15,7 +32,8 @@ static int check_fake(char *buffer, char *filepath)
             get_name(filepath);
             my_putstr(" : Error\n");
             return 84;
-        }
+        } else if (check_form(buffer, filepath) == 84)
+            return 84;
     }
     return 0;
 }
