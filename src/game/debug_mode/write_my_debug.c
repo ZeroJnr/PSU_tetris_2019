@@ -7,6 +7,15 @@
 
 #include "proto_tetris.h"
 
+static char *write_my_operator(char *buffer)
+{
+    for (int i = 0; buffer[i]; i++) {
+        if (buffer[i] == ',')
+            buffer[i] = '*';
+    }
+    return buffer;
+}
+
 static void print_list(tetris_t *tetris, int val1)
 {
     for (int val2 = 0; LIST1[val1][val2]; val2++) {
@@ -19,7 +28,6 @@ static void print_list(tetris_t *tetris, int val1)
         my_putchar(LIST1[val1][val2]);
     }
 }
-
 
 static void write_my_debug_sec(tetris_t *tetris)
 {
@@ -34,6 +42,7 @@ static void write_my_debug_sec(tetris_t *tetris)
     my_putstr(LIST1[7]);
     my_putchar('\n');
     my_putstr("Size :  ");
+    write_my_operator(LIST1[8]);
     my_putstr(LIST1[8]);
     my_putchar('\n');
 }
