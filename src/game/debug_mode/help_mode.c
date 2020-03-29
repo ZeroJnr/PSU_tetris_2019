@@ -34,7 +34,7 @@ static void my_cat(char *binary)
     my_putstr("false)\n");
 }
 
-int help_mode(char **av, int return_value) 
+int help_mode(char **av, int return_value)
 {
     my_cat(av[0]);
     exit(return_value);

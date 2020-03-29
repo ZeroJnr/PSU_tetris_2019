@@ -24,7 +24,7 @@ static int check_car(char *buffer, char *filepath)
         if (CHAR) {
             disp_error(filepath);
             return 84;
-        }  
+        }
     }
     return 0;
 }

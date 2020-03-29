@@ -10,11 +10,10 @@
 static void get_nb(tetris_t *tetris)
 {
     int y = 0;
-    
-    for (; FILES[y] != NULL; y++)
-        printf("%s\n", FILES[y]);
+
+    for (; FILES[y] != NULL; y++);
     NB_TETRI = y;
-    my_putstr("Tetriminos :  ");
+    my_putstr("Tetriminos : ");
     my_putchar(NB_TETRI + '0');
     my_putchar('\n');
 }
@@ -71,7 +70,7 @@ int get_filepath(tetris_t *tetris)
     if ((DIRECTORY = opendir(DIRNAME)) == NULL)
         return 84;
     get_nb_tetri(tetris);
-    if (!(FILES = malloc(sizeof(char *) * (NB_TETRI))))
+    if (!(FILES = malloc(sizeof(char *) * (NB_TETRI + 1))))
         return 84;
     else if (read_directory(tetris) == 84)
         return 84;
