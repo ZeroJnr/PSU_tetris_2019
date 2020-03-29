@@ -9,17 +9,8 @@
 
 static void catch_my_key(tetris_t *tetris)
 {
-    for (int i = 0; i < 4; i++) {
-        LIST1[i] = tigetstr(LIST1[i]);
-        if ((my_strncmp(LIST1[i], "\eOD", my_lenght(LIST1[i]))) == 0)
-            LIST1[i] = "^EOD";
-        if (my_strncmp(LIST1[i], "\eOC", my_lenght(LIST1[i])) == 0)
-            LIST1[i] = "^EOC";
-        else if (my_strncmp(LIST1[i], "\eOA", my_lenght(LIST1[i])) == 0)
-            LIST1[i] = "^EOA";
-        else if (my_strncmp(LIST1[i], "\eOB", my_lenght(LIST1[i])) == 0)
-            LIST1[i] = "^EOB";
-    }
+    for (int i = 0; i < 4; i++)
+        LIST1[i] = my_strdup(tigetstr(LIST1[i]));
 }
 
 void fill_default_list(tetris_t *tetris)

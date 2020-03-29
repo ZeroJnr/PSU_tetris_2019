@@ -22,6 +22,7 @@ struct debug
     int nb_tetri;
     char *my_term;
     char **list1;
+    char **p_list;
 };
 
 struct argument

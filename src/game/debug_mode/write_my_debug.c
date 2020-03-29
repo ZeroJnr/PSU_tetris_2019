@@ -7,6 +7,20 @@
 
 #include "proto_tetris.h"
 
+static void print_list(tetris_t *tetris, int val1)
+{
+    for (int val2 = 0; LIST1[val1][val2]; val2++) {
+        if (LIST1[val1][val2] == 27) {
+            my_putstr("^E");
+            my_putchar(LIST1[val1][val2 + 1]);
+            my_putchar(LIST1[val1][val2 + 2]);
+            return;
+        }
+        my_putchar(LIST1[val1][val2]);
+    }
+}
+
+
 static void write_my_debug_sec(tetris_t *tetris)
 {
     my_putchar('\n');
@@ -26,20 +40,19 @@ static void write_my_debug_sec(tetris_t *tetris)
 
 void write_my_debug(tetris_t *tetris)
 {
+    tetris->debug.p_list[0] = "Key Left";
+    tetris->debug.p_list[1] = "Key Right";
+    tetris->debug.p_list[2] = "Key Turn";
+    tetris->debug.p_list[3] = "Key Drop";
+
     my_putstr("*** DEBUG MODE ***");
     my_putchar('\n');
-    my_putstr("Key Left :  ");
-    my_putstr(LIST1[0]);
-    my_putchar('\n');
-    my_putstr("Key Right :  ");
-    my_putstr(LIST1[1]);
-    my_putchar('\n');
-    my_putstr("Key Turn :  ");
-    my_putstr(LIST1[2]);
-    my_putchar('\n');
-    my_putstr("Key Drop :  ");
-    my_putstr(LIST1[3]);
-    my_putchar('\n');
+    for (int i = 0; i < 4; i++) {
+        my_putstr(tetris->debug.p_list[i]);
+        my_putstr(" : ");
+        print_list(tetris, i);
+        my_putchar('\n');
+    }
     my_putstr("Key Quit :  ");
     my_putstr(LIST1[4]);
     write_my_debug_sec(tetris);

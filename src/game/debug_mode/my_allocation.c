@@ -27,5 +27,6 @@ static char **allocate(char **alloc)
 void my_allocation(tetris_t *tetris)
 {
     LIST1 = allocate(LIST1);
+    tetris->debug.p_list = allocate(tetris->debug.p_list);
     FONT = allocate(FONT);
 }
